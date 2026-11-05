@@ -1,10 +1,32 @@
 :root {
-  --couleur-fond: #f5f7fa;
+    --couleur-fond: #f5f7fa;
   --couleur-texte: #1f2937;
+  --couleur-principale: #1e3a8a;
+  --couleur-sur-principale: #ffffff;
+  --espace-petit: 0.5rem;
+  --espace-moyen: 1rem;
+  --espace-grand: 2rem;
 }
+
 
 body {
   background-color: var(--couleur-fond);
   color: var(--couleur-texte);
   font-family: Arial, sans-serif;
+}
+header {
+  background-color: var(--couleur-principale);
+  color: var(--couleur-sur-principale);
+  padding: var(--espace-moyen);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--espace-moyen);
+  padding: 0;
+}
+
+nav a {
+  color: var(--couleur-sur-principale);
 }
