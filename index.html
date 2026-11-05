@@ -43,6 +43,23 @@
                     </select>
                 </div>
 
+                <div>
+                    <label for="tri">Trier par</label>
+                    <select id="tri">
+                        <option value="titre-asc">Titre (A → Z)</option>
+                        <option value="titre-desc">Titre (Z → A)</option>
+                        <option value="annee-asc">Année (croissant)</option>
+                        <option value="annee-desc">Année (décroissant)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="filtre-dispo">
+                    <label for="filtre-dispo">Disponibles seulement</label>
+                </div>
+
+                <button type="button" id="btn-reinitialiser">Réinitialiser</button>
+
             </div>
             <p id="compteur" aria-live="polite"></p>
             <div id="liste-livres"></div>
