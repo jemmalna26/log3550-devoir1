@@ -1,5 +1,7 @@
 const champRecherche = document.getElementById("recherche");
 const compteur = document.getElementById("compteur");
+const filtreCategorie = document.getElementById("filtre-categorie");
+const filtreDispo = document.getElementById("filtre-dispo");
 const listeLivres = document.getElementById("liste-livres");
 
 function creerCarte(livre) {
@@ -36,10 +38,14 @@ function livreCorrespond(livre, recherche) {
   return texte.includes(normaliser(recherche));
 }
 
+function livrePasseLesFiltres(livre) {
+  const categorieOk = filtreCategorie.value === "" || livre.categorie === filtreCategorie.value;
+  const dispoOk = !filtreDispo.checked || livre.disponible;
+  return categorieOk && dispoOk && livreCorrespond(livre, champRecherche.value);
+}
+
 function mettreAJourAffichage() {
-  const resultats = livresDeDepart.filter(function (livre) {
-    return livreCorrespond(livre, champRecherche.value);
-  });
+    const resultats = livresDeDepart.filter(livrePasseLesFiltres);
 
   afficherLivres(resultats);
 
@@ -51,5 +57,7 @@ function mettreAJourAffichage() {
 }
 
 champRecherche.addEventListener("input", mettreAJourAffichage);
+filtreCategorie.addEventListener("change", mettreAJourAffichage);
+filtreDispo.addEventListener("change", mettreAJourAffichage);
 
 mettreAJourAffichage();
