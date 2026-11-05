@@ -2,6 +2,7 @@ const champRecherche = document.getElementById("recherche");
 const compteur = document.getElementById("compteur");
 const filtreCategorie = document.getElementById("filtre-categorie");
 const filtreDispo = document.getElementById("filtre-dispo");
+const choixTri = document.getElementById("tri");
 const listeLivres = document.getElementById("liste-livres");
 
 function creerCarte(livre) {
@@ -44,8 +45,21 @@ function livrePasseLesFiltres(livre) {
   return categorieOk && dispoOk && livreCorrespond(livre, champRecherche.value);
 }
 
+function trierLivres(livres) {
+  const morceaux = choixTri.value.split("-");
+  const champ = morceaux[0];
+  const sens = morceaux[1] === "asc" ? 1 : -1;
+
+  return livres.sort(function (a, b) {
+    if (champ === "titre") {
+      return a.titre.localeCompare(b.titre, "fr") * sens;
+    }
+    return (a.annee - b.annee) * sens;
+  });
+}
+
 function mettreAJourAffichage() {
-    const resultats = livresDeDepart.filter(livrePasseLesFiltres);
+      const resultats = trierLivres(livresDeDepart.filter(livrePasseLesFiltres));
 
   afficherLivres(resultats);
 
@@ -59,5 +73,6 @@ function mettreAJourAffichage() {
 champRecherche.addEventListener("input", mettreAJourAffichage);
 filtreCategorie.addEventListener("change", mettreAJourAffichage);
 filtreDispo.addEventListener("change", mettreAJourAffichage);
+choixTri.addEventListener("change", mettreAJourAffichage);
 
 mettreAJourAffichage();
