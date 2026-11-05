@@ -133,7 +133,24 @@ select:focus-visible {
 .carte p {
   margin: 0;
 }
+.etiquette {
+  display: inline-block;
+  margin-top: var(--espace-petit);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
 
+.etiquette-dispo {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.etiquette-emprunte {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
 @media (min-width: 600px) {
   #liste-livres {
     grid-template-columns: repeat(2, 1fr);

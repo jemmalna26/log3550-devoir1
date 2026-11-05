@@ -10,7 +10,11 @@ function creerCarte(livre) {
   const auteur = document.createElement("p");
   auteur.textContent = livre.auteur + " (" + livre.annee + ")";
 
-  carte.append(titre, auteur);
+    const etiquette = document.createElement("span");
+  etiquette.className = livre.disponible ? "etiquette etiquette-dispo" : "etiquette etiquette-emprunte";
+  etiquette.textContent = livre.disponible ? "Disponible" : "Emprunté";
+
+  carte.append(titre, auteur, etiquette);
   return carte;
 }
 
