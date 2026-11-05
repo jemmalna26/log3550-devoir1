@@ -1,0 +1,10 @@
+:root {
+  --couleur-fond: #f5f7fa;
+  --couleur-texte: #1f2937;
+}
+
+body {
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  font-family: Arial, sans-serif;
+}
