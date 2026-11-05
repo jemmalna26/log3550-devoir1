@@ -23,6 +23,27 @@
 
         <section id="catalogue" aria-labelledby="titre-catalogue">
             <h2 id="titre-catalogue">Catalogue</h2>
+
+            <div class="outils">
+
+                <div>
+                    <label for="recherche">Rechercher (titre ou auteur)</label>
+                    <input type="search" id="recherche">
+                </div>
+
+                <div>
+                    <label for="filtre-categorie">Catégorie</label>
+                    <select id="filtre-categorie">
+                        <option value="">Toutes</option>
+                        <option value="roman">Roman</option>
+                        <option value="science">Science</option>
+                        <option value="histoire">Histoire</option>
+                        <option value="informatique">Informatique</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+
+            </div>
             <p id="compteur" aria-live="polite"></p>
             <div id="liste-livres"></div>
         </section>
