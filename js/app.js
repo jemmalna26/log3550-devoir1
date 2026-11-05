@@ -3,6 +3,9 @@ const compteur = document.getElementById("compteur");
 const filtreCategorie = document.getElementById("filtre-categorie");
 const filtreDispo = document.getElementById("filtre-dispo");
 const choixTri = document.getElementById("tri");
+const formulaire = document.getElementById("formulaire-ajout");
+
+let livres = [...livresDeDepart];
 const listeLivres = document.getElementById("liste-livres");
 
 function creerCarte(livre) {
@@ -99,8 +102,5 @@ filtreCategorie.addEventListener("change", mettreAJourAffichage);
 filtreDispo.addEventListener("change", mettreAJourAffichage);
 choixTri.addEventListener("change", mettreAJourAffichage);
 formulaire.addEventListener("submit", ajouterLivre);
-const formulaire = document.getElementById("formulaire-ajout");
-
-let livres = [...livresDeDepart];
 
 mettreAJourAffichage();
