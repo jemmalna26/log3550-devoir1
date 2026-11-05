@@ -22,7 +22,16 @@ function creerCarte(livre) {
   etiquette.className = livre.disponible ? "etiquette etiquette-dispo" : "etiquette etiquette-emprunte";
   etiquette.textContent = livre.disponible ? "Disponible" : "Emprunté";
 
-  carte.append(titre, auteur, etiquette);
+    const boutonSupprimer = document.createElement("button");
+  boutonSupprimer.type = "button";
+  boutonSupprimer.className = "bouton-supprimer";
+  boutonSupprimer.textContent = "Supprimer";
+  boutonSupprimer.setAttribute("aria-label", "Supprimer le livre " + livre.titre);
+  boutonSupprimer.addEventListener("click", function () {
+    supprimerLivre(livre);
+  });
+
+  carte.append(titre, auteur, etiquette, boutonSupprimer);
   return carte;
 }
 
@@ -94,6 +103,17 @@ function ajouterLivre(evenement) {
 
   livres.push(nouveauLivre);
   formulaire.reset();
+  mettreAJourAffichage();
+}
+
+function supprimerLivre(livre) {
+  if (!confirm("Supprimer le livre « " + livre.titre + " » ?")) {
+    return;
+  }
+
+  livres = livres.filter(function (autreLivre) {
+    return autreLivre.id !== livre.id;
+  });
   mettreAJourAffichage();
 }
 

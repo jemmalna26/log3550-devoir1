@@ -151,6 +151,15 @@ select:focus-visible {
   background-color: #fee2e2;
   color: #991b1b;
 }
+.bouton-supprimer {
+  display: block;
+  margin-top: var(--espace-moyen);
+  background-color: #b91c1c;
+}
+
+.bouton-supprimer:hover {
+  background-color: #991b1b;
+}
 
 @media (min-width: 600px) {
   #liste-livres {
