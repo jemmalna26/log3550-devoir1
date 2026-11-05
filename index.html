@@ -25,6 +25,26 @@
       <div id="liste-livres"></div>
     </section>
 
+        <section id="ajout" aria-labelledby="titre-ajout">
+      <h2 id="titre-ajout">Ajouter un livre</h2>
+
+      <form id="formulaire-ajout" novalidate>
+
+        <div>
+          <label for="titre">Titre</label>
+          <input type="text" id="titre" name="titre" aria-describedby="erreur-titre">
+          <p class="erreur" id="erreur-titre"></p>
+        </div>
+
+        <div>
+          <label for="auteur">Auteur</label>
+          <input type="text" id="auteur" name="auteur" aria-describedby="erreur-auteur">
+          <p class="erreur" id="erreur-auteur"></p>
+        </div>
+
+      </form>
+    </section>
+
   </main>
 
 </body>
