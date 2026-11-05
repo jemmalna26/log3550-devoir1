@@ -8,6 +8,7 @@
   --espace-grand: 2rem;
   --couleur-survol: #2563eb;
   --couleur-focus: #f59e0b;
+  --couleur-carte: #ffffff;
 }
 
 
@@ -104,4 +105,43 @@ select:focus-visible {
   color: #b91c1c;
   font-size: 0.875rem;
   margin: 0.25rem 0 0;
+}
+#liste-livres {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espace-moyen);
+  margin-top: var(--espace-moyen);
+}
+
+.carte {
+  background-color: var(--couleur-carte);
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: var(--espace-moyen);
+}
+
+.carte:hover {
+  border-color: var(--couleur-principale);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.carte h3 {
+  margin: 0 0 var(--espace-petit);
+  color: var(--couleur-principale);
+}
+
+.carte p {
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  #liste-livres {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  #liste-livres {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
