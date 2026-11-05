@@ -59,7 +59,7 @@ function trierLivres(livres) {
 }
 
 function mettreAJourAffichage() {
-      const resultats = trierLivres(livresDeDepart.filter(livrePasseLesFiltres));
+        const resultats = trierLivres(livres.filter(livrePasseLesFiltres));
 
   afficherLivres(resultats);
 
@@ -70,9 +70,37 @@ function mettreAJourAffichage() {
   }
 }
 
+function prochainId() {
+  const ids = livres.map(function (livre) {
+    return livre.id;
+  });
+  return Math.max(...ids) + 1;
+}
+
+function ajouterLivre(evenement) {
+  evenement.preventDefault();
+
+  const nouveauLivre = {
+    id: prochainId(),
+    titre: document.getElementById("titre").value.trim(),
+    auteur: document.getElementById("auteur").value.trim(),
+    annee: Number(document.getElementById("annee").value),
+    categorie: document.getElementById("categorie").value,
+    disponible: document.getElementById("disponible").checked
+  };
+
+  livres.push(nouveauLivre);
+  formulaire.reset();
+  mettreAJourAffichage();
+}
+
 champRecherche.addEventListener("input", mettreAJourAffichage);
 filtreCategorie.addEventListener("change", mettreAJourAffichage);
 filtreDispo.addEventListener("change", mettreAJourAffichage);
 choixTri.addEventListener("change", mettreAJourAffichage);
+formulaire.addEventListener("submit", ajouterLivre);
+const formulaire = document.getElementById("formulaire-ajout");
+
+let livres = [...livresDeDepart];
 
 mettreAJourAffichage();
