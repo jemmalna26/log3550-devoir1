@@ -74,3 +74,34 @@ select:focus-visible {
   outline: 3px solid var(--couleur-focus);
   outline-offset: 2px;
 }
+#formulaire-ajout div {
+  margin-bottom: var(--espace-moyen);
+}
+
+#formulaire-ajout label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+#formulaire-ajout input[type="checkbox"] + label {
+  display: inline;
+  font-weight: normal;
+}
+
+#formulaire-ajout input[type="text"],
+#formulaire-ajout input[type="number"],
+#formulaire-ajout select {
+  width: 100%;
+  max-width: 25rem;
+  padding: var(--espace-petit);
+  font-size: 1rem;
+  border: 1px solid #9ca3af;
+  border-radius: 0.375rem;
+}
+
+.erreur {
+  color: #b91c1c;
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0;
+}
