@@ -6,6 +6,8 @@
   --espace-petit: 0.5rem;
   --espace-moyen: 1rem;
   --espace-grand: 2rem;
+  --couleur-survol: #2563eb;
+  --couleur-focus: #f59e0b;
 }
 
 
@@ -29,4 +31,46 @@ nav ul {
 
 nav a {
   color: var(--couleur-sur-principale);
+}
+main {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: var(--espace-moyen);
+}
+
+section {
+  margin-bottom: var(--espace-grand);
+}
+
+.outils {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-moyen);
+}
+
+button {
+  background-color: var(--couleur-principale);
+  color: var(--couleur-sur-principale);
+  border: none;
+  border-radius: 0.375rem;
+  padding: var(--espace-petit) var(--espace-moyen);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--couleur-survol);
+}
+
+button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--couleur-focus);
+  outline-offset: 2px;
 }
