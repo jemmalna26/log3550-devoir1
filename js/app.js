@@ -88,9 +88,39 @@ function prochainId() {
   });
   return Math.max(...ids) + 1;
 }
+function afficherErreur(idChamp, message) {
+  document.getElementById("erreur-" + idChamp).textContent = message;
+  document.getElementById(idChamp).setAttribute("aria-invalid", message === "" ? "false" : "true");
+}
+
+function validerFormulaire() {
+  const anneeCourante = new Date().getFullYear();
+  const titre = document.getElementById("titre").value.trim();
+  const auteur = document.getElementById("auteur").value.trim();
+  const annee = Number(document.getElementById("annee").value);
+  const categorie = document.getElementById("categorie").value;
+
+  const erreurs = {
+    titre: titre.length < 2 ? "Le titre est obligatoire (au moins 2 caractères)." : "",
+    auteur: auteur.length < 2 ? "L'auteur est obligatoire (au moins 2 caractères)." : "",
+    annee: annee < 1450 || annee > anneeCourante ? "L'année doit être comprise entre 1450 et " + anneeCourante + "." : "",
+    categorie: categorie === "" ? "Veuillez choisir une catégorie." : ""
+  };
+
+  Object.keys(erreurs).forEach(function (champ) {
+    afficherErreur(champ, erreurs[champ]);
+  });
+
+  return Object.values(erreurs).every(function (message) {
+    return message === "";
+  });
+}
 
 function ajouterLivre(evenement) {
   evenement.preventDefault();
+    if (!validerFormulaire()) {
+    return;
+  }
 
   const nouveauLivre = {
     id: prochainId(),
