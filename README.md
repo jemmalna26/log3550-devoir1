@@ -38,6 +38,15 @@ Les balises sémantiques (`header`, `nav`, `main`, `footer`) disent ce que conti
 
 Dans mon projet, j'ai utilisé `header`, `nav`, `main`, `section` et `footer` pour ces trois raisons.
 
+### Différence entre map, filter et forEach
+
+- `forEach` parcourt un tableau et exécute une action pour chaque élément, mais elle ne renvoie rien.
+- `filter` renvoie un nouveau tableau qui contient seulement les éléments qui passent un test.
+- `map` renvoie un nouveau tableau de même taille, où chaque élément a été transformé.
+
+J'ai utilisé `filter` pour la recherche et le filtrage, car il faut garder seulement les livres qui correspondent aux critères. J'ai utilisé `forEach` pour afficher les cartes et `map` pour calculer le prochain identifiant.
+
+
 ## Sources et outils utilisés
 
 [À compléter]
