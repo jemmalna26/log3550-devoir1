@@ -28,7 +28,15 @@ Les ajouts et suppressions sont conservés dans le navigateur (`localStorage`).
 
 ## Réponses aux questions d'explication
 
-[À compléter]
+### Pourquoi les balises sémantiques plutôt qu'une suite de div ?
+
+Les balises sémantiques (`header`, `nav`, `main`, `footer`) disent ce que contient chaque partie de la page, alors qu'un `div` ne dit rien.
+
+- **Accessibilité** : un lecteur d'écran annonce « navigation » ou « contenu principal », et l'utilisateur peut aller directement à la partie qui l'intéresse.
+- **Référencement** : les moteurs de recherche comprennent mieux la structure de la page et repèrent le contenu important grâce à `main` et `h1`.
+- **Maintenance** : le code se lit plus facilement, car le nom de la balise indique son rôle sans qu'il faille deviner.
+
+Dans mon projet, j'ai utilisé `header`, `nav`, `main`, `section` et `footer` pour ces trois raisons.
 
 ## Sources et outils utilisés
 
