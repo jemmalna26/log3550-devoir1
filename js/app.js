@@ -4,6 +4,7 @@ const filtreCategorie = document.getElementById("filtre-categorie");
 const filtreDispo = document.getElementById("filtre-dispo");
 const choixTri = document.getElementById("tri");
 const formulaire = document.getElementById("formulaire-ajout");
+const boutonReinitialiser = document.getElementById("btn-reinitialiser");
 
 const CLE_STOCKAGE = "catalogue-livres";
 
@@ -167,10 +168,21 @@ function supprimerLivre(livre) {
   mettreAJourAffichage();
 }
 
+function reinitialiserLivres() {
+  if (!confirm("Remettre les livres de départ ? Vos ajouts et suppressions seront perdus.")) {
+    return;
+  }
+
+  livres = [...livresDeDepart];
+  sauvegarderLivres();
+  mettreAJourAffichage();
+}
+
 champRecherche.addEventListener("input", mettreAJourAffichage);
 filtreCategorie.addEventListener("change", mettreAJourAffichage);
 filtreDispo.addEventListener("change", mettreAJourAffichage);
 choixTri.addEventListener("change", mettreAJourAffichage);
 formulaire.addEventListener("submit", ajouterLivre);
+boutonReinitialiser.addEventListener("click", reinitialiserLivres);
 
 mettreAJourAffichage();
