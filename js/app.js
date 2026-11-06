@@ -5,7 +5,25 @@ const filtreDispo = document.getElementById("filtre-dispo");
 const choixTri = document.getElementById("tri");
 const formulaire = document.getElementById("formulaire-ajout");
 
-let livres = [...livresDeDepart];
+const CLE_STOCKAGE = "catalogue-livres";
+
+function chargerLivres() {
+  const sauvegarde = localStorage.getItem(CLE_STOCKAGE);
+  if (sauvegarde === null) {
+    return [...livresDeDepart];
+  }
+  try {
+    return JSON.parse(sauvegarde);
+  } catch (erreur) {
+    return [...livresDeDepart];
+  }
+}
+
+function sauvegarderLivres() {
+  localStorage.setItem(CLE_STOCKAGE, JSON.stringify(livres));
+}
+
+let livres = chargerLivres();
 const listeLivres = document.getElementById("liste-livres");
 
 function creerCarte(livre) {
@@ -132,6 +150,7 @@ function ajouterLivre(evenement) {
   };
 
   livres.push(nouveauLivre);
+    sauvegarderLivres();
   formulaire.reset();
   mettreAJourAffichage();
 }
@@ -144,6 +163,7 @@ function supprimerLivre(livre) {
   livres = livres.filter(function (autreLivre) {
     return autreLivre.id !== livre.id;
   });
+    sauvegarderLivres();
   mettreAJourAffichage();
 }
 
