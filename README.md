@@ -20,11 +20,21 @@ Les ajouts et suppressions sont conservés dans le navigateur (`localStorage`).
 
 ## Choix de conception
 
-[À compléter]
+- **HTML sémantique** : j'ai structuré la page avec `header`, `nav`, `main`, `section` et `footer`, et relié chaque champ du formulaire à son `label`.
+- **Variables CSS** : les couleurs et les espacements sont définis une seule fois dans `:root`, ce qui permet de changer l'apparence en modifiant une seule ligne.
+- **Mobile d'abord** : le style de base est celui du téléphone (une colonne), puis deux points de rupture (600px et 960px) passent à deux, puis trois colonnes avec CSS Grid.
+- **Cartes créées en JavaScript** : chaque carte est fabriquée avec `createElement`, à partir du tableau de livres, et non écrite à la main dans le HTML.
+- **Une fonction centrale** : `mettreAJourAffichage` applique la recherche, les filtres et le tri ensemble, ce qui évite de répéter du code.
+- **Copie des données de départ** : je travaille sur une copie (`livres`) du tableau `livresDeDepart`, ce qui permet au bouton « Réinitialiser » de revenir à l'état initial.
+- **Accessibilité** : les messages d'erreur sont annoncés avec `aria-live`, l'état « Disponible » ou « Emprunté » est écrit en toutes lettres (pas seulement en couleur), et les éléments ont un contour visible au clavier.
+- **Sauvegarde** : la liste est enregistrée dans `localStorage` au format JSON, avec une protection si les données sont abîmées.
 
 ## Difficultés rencontrées
 
-[À compléter]
+- **Captures d'écran adaptatives** : j'ai d'abord changé la hauteur au lieu de la largeur dans le mode appareil du navigateur, donc la page restait sur trois colonnes. J'ai compris que le premier nombre est la largeur et j'ai refait la capture.
+- **Ordre des lignes dans `app.js`** : j'utilisais la variable `formulaire` avant de la créer, ce qui bloquait le programme et rechargeait la page au clic sur « Ajouter ». J'ai déplacé les déclarations en haut du fichier.
+- **Commits vides** : mon README a été commité vide parce que le fichier n'était pas enregistré (`Ctrl + S`). Je vérifie maintenant qu'il n'y a plus de point blanc sur l'onglet avant chaque `git add`.
+- **Commandes Git** : j'avais oublié les deux tirets de `--global` dans la configuration, ce qui donnait une erreur.
 
 ## Réponses aux questions d'explication
 
