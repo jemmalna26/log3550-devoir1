@@ -1,3 +1,4 @@
+// Éléments de la page utilisés par le script
 const champRecherche = document.getElementById("recherche");
 const compteur = document.getElementById("compteur");
 const filtreCategorie = document.getElementById("filtre-categorie");
@@ -8,6 +9,7 @@ const boutonReinitialiser = document.getElementById("btn-reinitialiser");
 
 const CLE_STOCKAGE = "catalogue-livres";
 
+// Lit la liste sauvegardée dans le navigateur, ou renvoie les livres de départ si elle n'existe pas ou est illisible.
 function chargerLivres() {
   const sauvegarde = localStorage.getItem(CLE_STOCKAGE);
   if (sauvegarde === null) {
@@ -20,6 +22,7 @@ function chargerLivres() {
   }
 }
 
+// Enregistre la liste actuelle dans le navigateur (localStorage), au format texte JSON.
 function sauvegarderLivres() {
   localStorage.setItem(CLE_STOCKAGE, JSON.stringify(livres));
 }
@@ -27,6 +30,7 @@ function sauvegarderLivres() {
 let livres = chargerLivres();
 const listeLivres = document.getElementById("liste-livres");
 
+// Crée la carte d'un livre : titre, auteur, étiquette d'état et bouton Supprimer.
 function creerCarte(livre) {
   const carte = document.createElement("article");
   carte.className = "carte";
@@ -54,6 +58,7 @@ function creerCarte(livre) {
   return carte;
 }
 
+// Vide la liste affichée, puis ajoute une carte par livre.
 function afficherLivres(livres) {
   listeLivres.innerHTML = "";
   livres.forEach(function (livre) {
@@ -61,21 +66,25 @@ function afficherLivres(livres) {
   });
 }
 
+// Met un texte en minuscules et retire les accents, pour comparer sans tenir compte de la casse ni des accents.
 function normaliser(texte) {
   return texte.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
+// Vrai si le texte cherché se trouve dans le titre ou dans l'auteur.
 function livreCorrespond(livre, recherche) {
   const texte = normaliser(livre.titre + " " + livre.auteur);
   return texte.includes(normaliser(recherche));
 }
 
+// Vrai si le livre respecte les trois critères à la fois : recherche, catégorie et disponibilité.
 function livrePasseLesFiltres(livre) {
   const categorieOk = filtreCategorie.value === "" || livre.categorie === filtreCategorie.value;
   const dispoOk = !filtreDispo.checked || livre.disponible;
   return categorieOk && dispoOk && livreCorrespond(livre, champRecherche.value);
 }
 
+// Trie les livres selon le choix de l'utilisateur : titre ou année, croissant ou décroissant.
 function trierLivres(livres) {
   const morceaux = choixTri.value.split("-");
   const champ = morceaux[0];
@@ -89,6 +98,7 @@ function trierLivres(livres) {
   });
 }
 
+// Applique les filtres et le tri, puis réaffiche la liste et met à jour le compteur. Appelée à chaque changement.
 function mettreAJourAffichage() {
         const resultats = trierLivres(livres.filter(livrePasseLesFiltres));
 
@@ -112,6 +122,7 @@ function afficherErreur(idChamp, message) {
   document.getElementById(idChamp).setAttribute("aria-invalid", message === "" ? "false" : "true");
 }
 
+// Vérifie les champs, affiche les messages d'erreur et renvoie vrai si tout est valide.
 function validerFormulaire() {
   const anneeCourante = new Date().getFullYear();
   const titre = document.getElementById("titre").value.trim();
@@ -135,6 +146,7 @@ function validerFormulaire() {
   });
 }
 
+// Ajoute un livre si le formulaire est valide, puis sauvegarde et réaffiche la liste.
 function ajouterLivre(evenement) {
   evenement.preventDefault();
     if (!validerFormulaire()) {
@@ -156,6 +168,7 @@ function ajouterLivre(evenement) {
   mettreAJourAffichage();
 }
 
+// Supprime un livre après confirmation de l'utilisateur.
 function supprimerLivre(livre) {
   if (!confirm("Supprimer le livre « " + livre.titre + " » ?")) {
     return;
@@ -168,6 +181,7 @@ function supprimerLivre(livre) {
   mettreAJourAffichage();
 }
 
+// Remet les livres de départ après confirmation.
 function reinitialiserLivres() {
   if (!confirm("Remettre les livres de départ ? Vos ajouts et suppressions seront perdus.")) {
     return;
@@ -178,6 +192,7 @@ function reinitialiserLivres() {
   mettreAJourAffichage();
 }
 
+// Chaque action de l'utilisateur met à jour l'affichage.
 champRecherche.addEventListener("input", mettreAJourAffichage);
 filtreCategorie.addEventListener("change", mettreAJourAffichage);
 filtreDispo.addEventListener("change", mettreAJourAffichage);

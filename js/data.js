@@ -1,3 +1,4 @@
+// Livres de départ. La page travaille sur une copie de cette liste (voir app.js).
 const livresDeDepart = [
   { id: 1, titre: "Gouverneurs de la rosée", auteur: "Jacques Roumain", annee: 1944, categorie: "roman", disponible: true },
   { id: 2, titre: "Une brève histoire du temps", auteur: "Stephen Hawking", annee: 1988, categorie: "science", disponible: true },
