@@ -67,3 +67,10 @@ J'ai utilisé `filter` pour la recherche et le filtrage, car il faut garder seul
 ## Dépôt Git
 
 https://github.com/jemmalna26/log3550-devoir1
+
+## Captures d'écran
+
+1. Validation W3C : `captures/01-validation-w3c.png`
+2. Écran large (1200 px, trois colonnes) : `captures/02-ecran-large.png`
+3. Tablette (768 px, deux colonnes) : `captures/03-tablette.png`
+4. Téléphone (375 px, une colonne) : `captures/04-telephone.png`
