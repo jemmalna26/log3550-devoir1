@@ -63,3 +63,7 @@ J'ai utilisé `filter` pour la recherche et le filtrage, car il faut garder seul
 - **Navigateur** : Microsoft Edge, avec ses outils de développement pour les captures d'écran adaptatives.
 - **Outil d'assistance (IA)** : j'ai utilisé Claude (Anthropic) comme guide. Il m'a expliqué les notions et proposé des exemples de code que j'ai tapés, testés dans le navigateur et corrigés en cas d'erreur. Je m'engage à pouvoir expliquer chaque partie du code.
 - **Images et polices** : aucune image ni bibliothèque externe n'a été utilisée.
+
+## Dépôt Git
+
+https://github.com/jemmalna26/log3550-devoir1
